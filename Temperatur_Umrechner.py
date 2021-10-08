@@ -67,4 +67,4 @@ def temp_umrechner():
             elif eingabe == 7:
                 anzeige()
         except ValueError:
-            wert_eingabe()
+            temp_umrechner()
