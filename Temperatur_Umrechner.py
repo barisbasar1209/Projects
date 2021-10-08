@@ -1,33 +1,71 @@
+from time import *
+
 
 def celsius_zu_kelvin():
     celsius = float(input('Grad Celsius: '))
-    kelvin = round(celsius+273.15, 2)
-    print(celsius, '°C =', kelvin, 'K')
+    if celsius < (-273.15):
+        print('\n'
+              'Deine Eingabe ist ungültig! Der absolute NP lieg bei -273.15°C.\n'
+              '')
+        sleep(0.75)
+    else:
+        kelvin = round(celsius+273.15, 2)
+        print(celsius, '°C =', kelvin, 'K')
 
 def celsius_zu_fahrenheit():
     celsius = float(input('Grad Celsius: '))
-    fahrenheit = round(celsius*(9/5)+32, 2)
-    print(celsius, '°C =', fahrenheit, '°F')
+    if celsius < (-273.15):
+        print('\n'
+              'Deine Eingabe ist ungültig! Der absolute NP lieg bei -273.15°C.\n'
+              '')
+        sleep(0.75)
+    else:
+        fahrenheit = round(celsius*(9/5)+32, 2)
+        print(celsius, '°C =', fahrenheit, '°F')
 
 def fahrenheit_zu_celsius():
     fahrenheit = float(input('Grad Fahrenheit: '))
-    celsius = round(fahrenheit * (5 / 9) - 32, 2)
-    print(fahrenheit, '°F =', celsius, '°C')
+    if fahrenheit < (-459.67):
+        print('\n'
+              'Deine Eingabe ist ungültig! Der absolute NP lieg bei -459.67°F.\n'
+              '')
+        sleep(0.75)
+    else:
+        celsius = round(fahrenheit * (5 / 9) - 32, 2)
+        print(fahrenheit, '°F =', celsius, '°C')
 
 def fahrenheit_zu_kelvin():
     fahrenheit = float(input('Grad Fahrenheit: '))
-    kelvin = round((fahrenheit - 32)*(5/9)+273.15, 2)
-    print(fahrenheit, '°F =', kelvin, 'K')
+    if fahrenheit < (-459.67):
+        print('\n'
+              'Deine Eingabe ist ungültig! Der absolute NP lieg bei -459.67°F.\n'
+              '')
+        sleep(0.75)
+    else:
+        kelvin = round((fahrenheit - 32)*(5/9)+273.15, 2)
+        print(fahrenheit, '°F =', kelvin, 'K')
 
 def kelvin_zu_celsius():
     kelvin = float(input('Grad Kelvin: '))
-    celsius = round(kelvin-273.15, 2)
-    print(kelvin, 'K =', celsius, '°C')
+    if kelvin < 0:
+        print('\n'
+              'Deine Eingabe ist ungültig! Der absolute NP lieg bei 0K.\n'
+              '')
+        sleep(0.75)
+    else:
+        celsius = round(kelvin-273.15, 2)
+        print(kelvin, 'K =', celsius, '°C')
 
 def kelvin_zu_fahrenheit():
     kelvin = float(input('Grad Kelvin: '))
-    fahrenheit = round((kelvin-273.15)*(9/5)+32, 2)
-    print(kelvin, 'K =', fahrenheit, '°F')
+    if kelvin < 0:
+        print('\n'
+              'Deine Eingabe ist ungültig! Der absolute NP lieg bei 0K.\n'
+              '')
+        sleep(0.75)
+    else:
+        fahrenheit = round((kelvin-273.15)*(9/5)+32, 2)
+        print(kelvin, 'K =', fahrenheit, '°F')
 
 
 def anzeige():
@@ -49,6 +87,7 @@ def temp_umrechner():
         try:
             eingabe = float(input('Welche Umrechnung möchtest du durchführen? \n'
                                   '(1-6), (0) zum beenden oder (7) für die Auswahlanzeige: '))
+            print('')
             if eingabe in range(1, 7):
                 if eingabe == 1:
                     celsius_zu_kelvin()
@@ -68,3 +107,4 @@ def temp_umrechner():
                 anzeige()
         except ValueError:
             temp_umrechner()
+
