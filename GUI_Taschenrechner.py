@@ -56,6 +56,8 @@ def button_equal():
     
     
     #If statements um dem Istgleich-Knopf mehrere Fähigkeiten zu verleihen 
+    #die Zahlen müssen als floats deklariert werden wegen der Division die sonst automatisch floats ausspuckt 
+    #wodurch man dann keine Anschlussrechnungen von int und float mehr machen könnte
     
     if (math=="addition"):
         eingabe.insert(0, float(nummer_1) + float(nummer_2))
