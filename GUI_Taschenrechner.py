@@ -67,7 +67,6 @@ def button_equal():
         eingabe.insert(0, float(nummer_1)/float(nummer_2))
     
         
-
 base = Tk() #mainloop wird geöffnet
 
 base.title("Trivialer Additionsrechner") #titel des Fensters
