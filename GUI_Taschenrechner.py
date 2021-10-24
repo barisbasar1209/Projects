@@ -60,7 +60,7 @@ def button_equal():
     #wodurch man dann keine Anschlussrechnungen von int und float mehr machen könnte
 
     if (math=="addition"):
-        eingabe.insert(0, float(nummer_1) + float(nummer_2))
+        addition = eingabe.insert(0, float(nummer_1) + float(nummer_2))
     elif (math=="subtraktion"):
         eingabe.insert(0, float(nummer_1)-float(nummer_2))
     elif (math=="multiplikation"):
@@ -75,33 +75,33 @@ base = Tk() #mainloop wird geöffnet
 base.title("Trivialer Additionsrechner") #titel des Fensters
 
 # Eingabefeld zur Eingabe der Zahlen per Knöpfe
-eingabe = Entry(base, width="34", text=button_click, fg="white", bg="black")
+eingabe = Entry(base, width="34", text=button_click)
 eingabe.grid(row=0, column=0, columnspan=3)
 
 
 #Hier sind einfach alle Knöpfe mit ihren Eigenschaften (Breite, Höhe, Farben, Textinhalt und Funktion) gelistet
 # das lambda: im command dient dazu um der Funktion auch Parameter übergeben zu können
 
-b_0 = Button(base, padx="40", pady="20", text="0", fg="white", bg="black", command=lambda: button_click(0))
+b_0 = Button(base, padx="40", pady="20", text="0", command=lambda: button_click(0))
 
-b_1 = Button(base, padx="40", pady="20", text="1", fg="white", bg="black",  command=lambda: button_click(1))
-b_2 = Button(base, padx="40", pady="20", text="2", fg="white", bg="black", command=lambda: button_click(2))
-b_3 = Button(base, padx="40", pady="20", text="3", fg="white", bg="black", command=lambda: button_click(3))
+b_1 = Button(base, padx="40", pady="20", text="1", command=lambda: button_click(1))
+b_2 = Button(base, padx="40", pady="20", text="2", command=lambda: button_click(2))
+b_3 = Button(base, padx="40", pady="20", text="3", command=lambda: button_click(3))
 
-b_4 = Button(base, padx="40", pady="20", text="4", fg="white", bg="black", command=lambda: button_click(4))
-b_5 = Button(base, padx="40", pady="20", text="5", fg="white", bg="black", command=lambda: button_click(5))
-b_6 = Button(base, padx="40", pady="20", text="6", fg="white", bg="black", command=lambda: button_click(6))
+b_4 = Button(base, padx="40", pady="20", text="4", command=lambda: button_click(4))
+b_5 = Button(base, padx="40", pady="20", text="5", command=lambda: button_click(5))
+b_6 = Button(base, padx="40", pady="20", text="6", command=lambda: button_click(6))
 
-b_7 = Button(base, padx="40", pady="20", text="7", fg="white", bg="black", command=lambda: button_click(7))
-b_8 = Button(base, padx="40", pady="20", text="8", fg="white", bg="black", command=lambda: button_click(8))
-b_9 = Button(base, padx="40", pady="20", text="9", fg="white", bg="black", command=lambda: button_click(9))
+b_7 = Button(base, padx="40", pady="20", text="7", command=lambda: button_click(7))
+b_8 = Button(base, padx="40", pady="20", text="8", command=lambda: button_click(8))
+b_9 = Button(base, padx="40", pady="20", text="9", command=lambda: button_click(9))
 
-b_equal = Button(base, padx="88", pady="20", text="=",     fg="white", bg="black", command=button_equal)
-b_c     = Button(base, padx="78", pady="20", text="Clear", fg="white", bg="black", command=button_clear)
-b_add   = Button(base, padx="39", pady="20", text="+",     fg="white", bg="black", command=button_add)
-b_sub   = Button(base, padx="39", pady="20", text="−",     fg="white", bg="black", command=button_sub)
-b_mult  = Button(base, padx="40", pady="20", text="x",     fg="white", bg="black", command=button_mult)
-b_div   = Button(base, padx="41", pady="20", text="/",     fg="white", bg="black", command=button_div)
+b_equal = Button(base, padx="88", pady="20", text="=",     command=button_equal)
+b_c     = Button(base, padx="78", pady="20", text="Clear", command=button_clear)
+b_add   = Button(base, padx="39", pady="20", text="+",     command=button_add)
+b_sub   = Button(base, padx="39", pady="20", text="−",     command=button_sub)
+b_mult  = Button(base, padx="40", pady="20", text="x",     command=button_mult)
+b_div   = Button(base, padx="41", pady="20", text="/",     command=button_div)
 
 
 #und hier stehen zu allen Knöpgen noch die .grids, durch welche diese auch abgebildet werden können
