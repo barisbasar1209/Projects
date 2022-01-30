@@ -1,3 +1,7 @@
+# To whoever is reading this right now : This was one of the first things I wrote in python. At this point of time I did not now that things like 
+# sorting algorithms existed. So I just thought of some (actually very inefficient) sorting algo and implemented it completely on my own. 
+# It might appear a bit weird, but just for the sake of documenting my progress I will leave this in here 
+
 L = [2, 43, -2, 45, 6, 97, -21, 2234, -321, 63, 4]
 
 #das Minimum muss erst irgendwo festgesetzt werden um dann iterativ die einzelnen Elemente in der Liste
