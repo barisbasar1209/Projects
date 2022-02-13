@@ -1,2 +1,2 @@
 # Projects
-Einfach meine Übungsprojekte
+Personal projects and exercises
