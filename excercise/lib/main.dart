@@ -15,14 +15,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const StatefulScaffold(),
+      home: StatefulScaffold(),
     );
   }
 }
 
 class StatefulScaffold extends StatefulWidget {
+  // final Color fgcolor;
+  // final Color bgcolor;
+
   const StatefulScaffold({
     Key? key,
+    // required this.fgcolor,
+    // required this.bgcolor,
   }) : super(key: key);
 
   @override
@@ -48,15 +53,50 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
 
   @override
   Widget build(BuildContext context) {
+    Color iconbuttoncolor = const Color(0xff1976D2);
+    Color bgcolor = Colors.blue;
+    Color fgcolor = Colors.black;
+    bool isFavorite = false;
+    Size ratio = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20))),
-          title: const Center(child: Text('tEsTaPp')),
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.blue),
+        actions: [
+          SizedBox(
+            width: ratio.width * 1,
+            height: ratio.height * 0.1,
+
+            // continue at this place tomorrow with setting the functionality
+            // for colorswitch when AppBat is tapped
+            child: InkWell(
+              onTap: () {
+                isFavorite = !isFavorite;
+                setState(
+                  () {
+                    // fgcolor = Colors.blue;
+                    // bgcolor = Colors.black;
+                  },
+                );
+              },
+              child: Center(
+                child: Text(
+                  'Testapp',
+                  style: TextStyle(
+                    fontSize: ratio.height * 0.035,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        title: const Center(child: Text('TestApp')),
+        foregroundColor: fgcolor,
+        backgroundColor: bgcolor,
+      ),
       bottomNavigationBar: BottomAppBar(
         shape: const AutomaticNotchedShape(RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -64,7 +104,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
         color: Colors.blue,
         child: SizedBox(
           // muss dynamisiert werden , sonst passt die Höhe nicht auf jedem Handy
-          height: 75,
+          height: ratio.height * 0.1,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <CircleAvatar>[
@@ -87,7 +127,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                       },
                     ),
                   ),
-                  backgroundColor: Colors.blue[700],
+                  backgroundColor: iconbuttoncolor,
                   foregroundColor: Colors.black),
               CircleAvatar(
                 child: IconButton(
@@ -101,7 +141,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                         curve: Curves.fastOutSlowIn);
                   },
                 ),
-                backgroundColor: Colors.blue[700],
+                backgroundColor: iconbuttoncolor,
                 foregroundColor: Colors.black,
               ),
               CircleAvatar(
@@ -118,7 +158,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                         curve: Curves.fastOutSlowIn);
                   },
                 ),
-                backgroundColor: Colors.blue[700],
+                backgroundColor: iconbuttoncolor,
                 foregroundColor: Colors.black,
               ),
             ],
@@ -144,15 +184,17 @@ class _SecoundRouteStateArrow extends State<SecoundRouteArrow> {
   @override
   Widget build(BuildContext context) {
     Size ratio = MediaQuery.of(context).size;
+    Color bgcolor = Colors.blue;
+    Color fgcolor = Colors.black;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Arrow Page'),
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.blue,
+        backgroundColor: fgcolor,
+        foregroundColor: bgcolor,
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
+        color: fgcolor,
         child: SizedBox(
           height: ratio.height * 0.1,
         ),
@@ -204,7 +246,6 @@ class _ThirdRouteAddState extends State<ThirdRouteAdd> {
 
     return Scaffold(
       body: CustomScrollView(
-        // anchor: ratio.height * 0.5,
         scrollDirection: Axis.vertical,
         slivers: [
           SliverAppBar(
@@ -229,18 +270,6 @@ class _ThirdRouteAddState extends State<ThirdRouteAdd> {
           ),
         ],
       ),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.black,
-      //   foregroundColor: Colors.blue,
-      //   title: Text(
-      //     'Add Route',
-      //   ),
-      // ),
-      // bottomNavigationBar: SliverAppBar(
-      //   title: Text(
-      //     'Drag up !',
-      //   ),
-      // ),
     );
   }
 }
