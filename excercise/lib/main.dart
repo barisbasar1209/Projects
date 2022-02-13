@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: StatefulScaffold(),
+      home: const StatefulScaffold(),
     );
   }
 }
@@ -122,7 +122,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                           iconIdx = 0;
                         });
                         pageController.animateToPage(0,
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.fastOutSlowIn);
                       },
                     ),
@@ -137,7 +137,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                       iconIdx = 1;
                     });
                     pageController.animateToPage(1,
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.fastOutSlowIn);
                   },
                 ),
@@ -154,7 +154,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                       iconIdx = 2;
                     });
                     pageController.animateToPage(2,
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.fastOutSlowIn);
                   },
                 ),
@@ -174,7 +174,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
 }
 
 class SecoundRouteArrow extends StatefulWidget {
-  SecoundRouteArrow({Key? key}) : super(key: key);
+  const SecoundRouteArrow({Key? key}) : super(key: key);
 
   @override
   State<SecoundRouteArrow> createState() => _SecoundRouteStateArrow();
@@ -233,7 +233,7 @@ class _SecoundRouteStateArrow extends State<SecoundRouteArrow> {
 }
 
 class ThirdRouteAdd extends StatefulWidget {
-  ThirdRouteAdd({Key? key}) : super(key: key);
+  const ThirdRouteAdd({Key? key}) : super(key: key);
 
   @override
   State<ThirdRouteAdd> createState() => _ThirdRouteAddState();
@@ -259,9 +259,9 @@ class _ThirdRouteAddState extends State<ThirdRouteAdd> {
               (BuildContext context, int index) {
                 return ListTile(
                   leading: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     width: 100,
-                    child: Placeholder(),
+                    child: const Placeholder(),
                   ),
                 );
               },
@@ -275,7 +275,7 @@ class _ThirdRouteAddState extends State<ThirdRouteAdd> {
 }
 
 class FourthRouteSquare extends StatefulWidget {
-  FourthRouteSquare({Key? key}) : super(key: key);
+  const FourthRouteSquare({Key? key}) : super(key: key);
 
   @override
   State<FourthRouteSquare> createState() => _FourthRouteSquareState();
@@ -288,7 +288,7 @@ class _FourthRouteSquareState extends State<FourthRouteSquare> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.blue,
-        title: Text(
+        title: const Text(
           'Square Page',
         ),
       ),
