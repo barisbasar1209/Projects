@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
-
+import 'routes/SecondRouteArrow.dart';
+import 'routes/ThirdRouteAdd.dart';
+import 'routes/FourthRouteSquare.dart';
 // Neues feature: Wenn diese Box in der Mitte gedrückt wird soll sie laden und dann eine
 // neue Seite zeigen wo man ein kleines spiel spielen kann oder etwas ähnliches
 // Kann entweder die Tap funktion auf dem Icon schreiben oder auf der Box
@@ -102,7 +104,7 @@ class _IconShowerState extends State<IconShower> {
                 },
                 child: Icon(
                   icons[index],
-                  size: 200,
+                  size: ratio.height * 0.275,
                 ),
               )
             else if (index == 2)
