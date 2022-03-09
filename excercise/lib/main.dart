@@ -4,7 +4,6 @@ import 'test.dart';
 
 void main() {
   runApp(const MyApp());
-  // runnApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,13 +20,8 @@ class MyApp extends StatelessWidget {
 }
 
 class StatefulScaffold extends StatefulWidget {
-  // final Color fgcolor;
-  // final Color bgcolor;
-
   const StatefulScaffold({
     Key? key,
-    // required this.fgcolor,
-    // required this.bgcolor,
   }) : super(key: key);
 
   @override
@@ -35,48 +29,48 @@ class StatefulScaffold extends StatefulWidget {
 }
 
 class _StatefulScaffoldState extends State<StatefulScaffold> {
-  /*double addsize = 0;
-  double squaresize = 0;
-  double arrowsize = 0;
-
-  
-  void printSizes() {
-    print(addsize);
-    print(squaresize);
-    print(arrowsize);
-    print('\n');
-  }*/
-
+  bool _hbp =
+      false; // boolean variable "hasBeenPressed" to control the functionality of the, ontap, color switch indicating AppBar
   int iconIdx = 0;
+
+  Color iconbuttoncolor = const Color(0xff1976D2);
+  Color fgcolor = Colors.black;
+  Color bgcolor = Colors.blue;
+  // colors have to be declared outside of Widet builder, still not quite sure why but it works
+
   PageController pageController = PageController();
-  // klassen werden mit konstruktoren initialisiert werden
+  // classes get initiated by the use of a contructor
 
   @override
   Widget build(BuildContext context) {
-    Color iconbuttoncolor = const Color(0xff1976D2);
-    Color bgcolor = Colors.blue;
-    Color fgcolor = Colors.black;
-    bool isFavorite = false;
     Size ratio = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
+          // SizedBox in which the Inkwell is nested in in order to control the layout of the AppBar
           SizedBox(
             width: ratio.width * 1,
             height: ratio.height * 0.1,
 
-            // continue at this place tomorrow with setting the functionality
-            // for colorswitch when AppBat is tapped
+            // Inkwell for colorswitch when AppBar is tapped
             child: InkWell(
               onTap: () {
-                isFavorite = !isFavorite;
                 setState(
                   () {
-                    // fgcolor = Colors.blue;
-                    // bgcolor = Colors.black;
+                    // stuff that has to change immediately after pushing a button for example
+                    // has to be put in the setState property
+                    iconbuttoncolor = _hbp
+                        ? const Color(0xff111111)
+                        : const Color(0xff1976D2);
+                    fgcolor = _hbp ? Colors.blue : Colors.black;
+                    bgcolor = _hbp ? Colors.black : Colors.blue;
+                    _hbp = !_hbp;
+                    // this line changes the state of hbp (has been pressed) to it's opposite boolean everytime the appBar is pressed
                   },
                 );
               },
+              // Arrangement of the text in the Appbar
               child: Center(
                 child: Text(
                   'Testapp',
@@ -89,21 +83,34 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
             ),
           )
         ],
+        // End of the action section of the AppBar
+        // Mostly the layout part of the AppBar itself
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20))),
-        title: const Center(child: Text('TestApp')),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+        title: const Center(
+          child: Text('TestApp'),
+        ),
         foregroundColor: fgcolor,
         backgroundColor: bgcolor,
       ),
+      // Beginning of the BottomNavBar which is here implemented as an BottomAppbar, same shape as the Appbar
+      // No functionalities implemented besides the Iconbuttons
       bottomNavigationBar: BottomAppBar(
-        shape: const AutomaticNotchedShape(RoundedRectangleBorder(
+        shape: const AutomaticNotchedShape(
+          RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)))),
-        color: Colors.blue,
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+        ),
+        color: bgcolor,
+        // Same as in the AppBar, using a SizedBox in order to control the layout of the elements in the BottomAppBar
         child: SizedBox(
-          // muss dynamisiert werden , sonst passt die Höhe nicht auf jedem Handy
           height: ratio.height * 0.1,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -114,21 +121,21 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                     child: IconButton(
                       icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () {
-                        // durch setState sage ich Flutter dass alle vars die
-                        // da drinnen stehen in der UI reloaded werden sollen
-                        // dieser State kann nur in dieser Klasse genutzt werden
-
-                        setState(() {
-                          iconIdx = 0;
-                        });
-                        pageController.animateToPage(0,
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.fastOutSlowIn);
+                        setState(
+                          () {
+                            iconIdx = 0;
+                          },
+                        );
+                        pageController.animateToPage(
+                          0,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.fastOutSlowIn,
+                        );
                       },
                     ),
                   ),
                   backgroundColor: iconbuttoncolor,
-                  foregroundColor: Colors.black),
+                  foregroundColor: fgcolor),
               CircleAvatar(
                 child: IconButton(
                   icon: const Icon(Icons.add),
@@ -142,7 +149,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                   },
                 ),
                 backgroundColor: iconbuttoncolor,
-                foregroundColor: Colors.black,
+                foregroundColor: fgcolor,
               ),
               CircleAvatar(
                 child: IconButton(
@@ -159,12 +166,13 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                   },
                 ),
                 backgroundColor: iconbuttoncolor,
-                foregroundColor: Colors.black,
+                foregroundColor: fgcolor,
               ),
             ],
           ),
         ),
       ),
+      // this IconShower, which is a widget created in another file, is supposed to control which iconbox is currently shown
       body: IconShower(
         pageController: pageController,
         iconIdx: iconIdx,
