@@ -67,6 +67,7 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
                     bgcolor = _hbp ? Colors.black : Colors.blue;
                     _hbp = !_hbp;
                     // this line changes the state of hbp (has been pressed) to it's opposite boolean everytime the appBar is pressed
+                    // Navigator.push(context, MaterialPageRoute(builder: (_) => IconShower(passedfg: fgcolor, passedbg: bgcolor)))
                   },
                 );
               },
@@ -176,6 +177,8 @@ class _StatefulScaffoldState extends State<StatefulScaffold> {
       body: IconShower(
         pageController: pageController,
         iconIdx: iconIdx,
+        passedbg: bgcolor,
+        passedfg: fgcolor,
       ),
     );
   }

@@ -12,26 +12,26 @@ import 'routes/FourthRouteSquare.dart';
 
 // ! when AppBar is tapped the color shall invert
 
-class Box extends StatelessWidget {
-  const Box({Key? key}) : super(key: key);
+// class Box extends StatelessWidget {
+//   const Box({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    var ratio = MediaQuery.of(context).size;
+//   @override
+//   Widget build(BuildContext context) {
+//     var ratio = MediaQuery.of(context).size;
 
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Container(
-          height: ratio.height * 0.3,
-          width: ratio.height * 0.3,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.blue),
-        ),
-      ]),
-    ]);
-  }
-}
+//     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+//       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+//         Container(
+//           height: ratio.height * 0.3,
+//           width: ratio.height * 0.3,
+//           decoration: const BoxDecoration(
+//               borderRadius: BorderRadius.all(Radius.circular(20)),
+//               color: Colors.blue),
+//         ),
+//       ]),
+//     ]);
+//   }
+// }
 
 class IconShower extends StatefulWidget {
   // variablen immer final
@@ -40,13 +40,17 @@ class IconShower extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
   final pageController;
 
+  final Color passedfg;
+  final Color passedbg;
   // required bedeuted dass der parameter übergeben werden muss
-  const IconShower({
-    Key? key,
-    // optionaler Param der immer garantiert einen Wert hat
-    this.iconIdx = 0, // ist kein Icon
-    this.pageController,
-  }) : super(key: key);
+  const IconShower(
+      {Key? key,
+      // optionaler Param der immer garantiert einen Wert hat
+      this.iconIdx = 0, // ist kein Icon
+      this.pageController,
+      required this.passedbg,
+      required this.passedfg})
+      : super(key: key);
 
   // variablen immer in der Oberklasse des states übergeben
   @override
@@ -74,7 +78,28 @@ class _IconShowerState extends State<IconShower> {
           // alignment: Alignment.center,
           children: [
             // widget. macht es mir möglich auf (die Variablen der) Oberklasse zuzugreifen
-            const Box(),
+            // const Box(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: ratio.height * 0.3,
+                      width: ratio.height * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                        color: widget.passedbg,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            // end of the box
             if (index == 0)
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -91,6 +116,7 @@ class _IconShowerState extends State<IconShower> {
                   child: Icon(
                     icons[index],
                     size: ratio.height * 0.275,
+                    color: widget.passedfg,
                   ),
                 ),
               )
@@ -104,6 +130,7 @@ class _IconShowerState extends State<IconShower> {
                 child: Icon(
                   icons[index],
                   size: ratio.height * 0.275,
+                  color: widget.passedfg,
                 ),
               )
             else if (index == 2)
@@ -116,6 +143,7 @@ class _IconShowerState extends State<IconShower> {
                 child: Icon(
                   icons[index],
                   size: ratio.height * 0.275,
+                  color: widget.passedfg,
                 ),
               )
           ],
@@ -125,37 +153,37 @@ class _IconShowerState extends State<IconShower> {
   }
 }
 
-class Foo extends StatefulWidget {
-  // variablen immer final
-  final double addsize;
-  final double squaresize;
-  final double arrowsize;
+// class Foo extends StatefulWidget {
+//   // variablen immer final
+//   final double addsize;
+//   final double squaresize;
+//   final double arrowsize;
 
-  // required bedeuted dass der parameter übergeben werden muss
-  const Foo(
-      {Key? key,
-      required this.addsize,
-      required this.squaresize,
-      required this.arrowsize})
-      : super(key: key);
+//   // required bedeuted dass der parameter übergeben werden muss
+//   const Foo(
+//       {Key? key,
+//       required this.addsize,
+//       required this.squaresize,
+//       required this.arrowsize})
+//       : super(key: key);
 
-  // variablen immer in der Oberklasse des states übergeben
-  @override
-  State<Foo> createState() => _FooState();
-}
+//   // variablen immer in der Oberklasse des states übergeben
+//   @override
+//   State<Foo> createState() => _FooState();
+// }
 
-class _FooState extends State<Foo> {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        // widget. macht es mir möglich auf (die Variablen der) Oberklasse zuzugreifen
-        const Box(),
-        Icon(Icons.add, size: widget.addsize),
-        Icon(Icons.crop_square, size: widget.squaresize),
-        Icon(Icons.arrow_back_ios, size: widget.arrowsize),
-      ],
-    );
-  }
-}
+// class _FooState extends State<Foo> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Stack(
+//       alignment: Alignment.center,
+//       children: [
+//         // widget. macht es mir möglich auf (die Variablen der) Oberklasse zuzugreifen
+//         const Box(),
+//         Icon(Icons.add, size: widget.addsize),
+//         Icon(Icons.crop_square, size: widget.squaresize),
+//         Icon(Icons.arrow_back_ios, size: widget.arrowsize),
+//       ],
+//     );
+//   }
+// }
