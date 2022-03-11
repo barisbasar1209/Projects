@@ -13,6 +13,8 @@ class _SecoundRouteStateArrow extends State<SecoundRouteArrow> {
     Size ratio = MediaQuery.of(context).size;
     Color bgcolor = Colors.blue;
     Color fgcolor = Colors.black;
+    // first task: circle in the middle of the page, when tapped the user shall be able to upload an image
+    // second task : when on secoundroute the user shall be able to switch directly to the third and fourth route
 
     return Scaffold(
       appBar: AppBar(
